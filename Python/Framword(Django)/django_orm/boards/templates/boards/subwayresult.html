@@ -1,0 +1,21 @@
+<!--subwayresult.html-->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ name }}님이 주문하신 결과는?</h1>
+
+<p>{{ sandwitch }} / {{ size }} 크기로</p>
+<p>{{ bread }} 에 {{ source }}를 곁들였습니다.</p>
+
+<h3>{{ nowdate }}</h3>
+<hr>
+    <ul>
+    {% for i in sb %}
+        <li>이름 - {{ i.title }}</li>
+        <li>날짜 - {{ i.nowdate }}</li>
+        <li>빵  - {{ i.bread }}</li>
+        <li>소스 - {{ i.source }}</li>
+        <br>
+    {% endfor %}   
+    </ul>
+{% endblock %}

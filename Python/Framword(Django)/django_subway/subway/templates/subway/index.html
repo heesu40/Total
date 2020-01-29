@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"> 주문표</th>
+        <th scope="col"> 이름</th>  
+        <th scope="col"> 주문시간</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+    {% for ss in sb %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href="{% url 'subway:detail' ss.id %}">{{ss.name}}</a></td>
+        <td><a href="{% url 'subway:detail' ss.id %}">{{ss.create_at}}</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    {% csrf_token %}
+    <h1>{{ question.question }}</h1>
+  
+    
+    <hr>
+
+    <ol>
+        {% for vv in question_vote %}
+        {{ vv.survey }}
+        <li><a href="{% url 'btest:survey_mod' vv.id  %}">수정하기</a></li>
+     
+        {% empty %}
+        등록된 투표가 없다.
+        {% endfor %}
+    </ol>
+    <form action='{% url "btest:survey" question.id %}' method= 'POST'>
+        {% csrf_token %}
+        <input type="text" name = "detailadd">
+        <input type='submit' value="항목추가">
+    </form>
+    
+
+{% endblock %}

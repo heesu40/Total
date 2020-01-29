@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Nav{% endblock %}
+
+{% block static_link %}
+
+<link rel="stylesheet" href="{%static 'stylesheets/pages/style.css' %}">
+{% endblock %}
+
+{% block body %}
+<img src="{% static 'images/pages/고기파이.jpg' %}" alt="고기파이">
+<h1>안녕 고기파이!</h1>
+
+{% endblock %}
+
+
