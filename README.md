@@ -20,7 +20,6 @@
 7. [Node.js](https://github.com/heesu40/STUDY/blob/master/Study/Node.js.md)
 8. 알고리즘
    - [백준](https://github.com/heesu40/STUDY/blob/master/Study/%EB%B0%B1%EC%A4%80.md)
-  
 9. 빅데이터
    - [Linux](https://github.com/heesu40/STUDY/blob/master/Study/Linux.md)
    - [hadoop](https://github.com/heesu40/STUDY/blob/master/Study/hadoop.md)
@@ -31,6 +30,7 @@
     - [게시판 만들기](https://github.com/heesu40/STUDY/blob/master/Study/%EC%8B%A4%EC%A0%84%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8(%EA%B2%8C%EC%8B%9C%ED%8C%90%EB%A7%8C%EB%93%A4%EA%B8%B0).md)
     - [우아한 주정차](https://github.com/heesu40/Complete)
     - [issueWhatShow](https://github.com/heesu40/issuewhatshow)
-11. 그 외
+11. [파이썬]() 
+12. 그 외
     - [4차산업혁명](https://github.com/heesu40/STUDY/blob/master/Study/The%20Fourth%20Industrial%20Revolution.md)
 
