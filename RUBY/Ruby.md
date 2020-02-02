@@ -586,3 +586,138 @@ puts(finish - start)
 
 
 
+
+
+## 루비 참고 55가지 
+
+참고 깃 주소 : https://gist.github.com/nacyot/7624036
+
+1. Array 객체의 스택 메소드는 인수 하나만 받는다.
+
+```ruby
+stack = []
+stack.push 1,2,3 # => [ 1 , 2 , 3]
+stack.pop 2 # => [2, 3]
+stack # => [1]
+stack.unshift 4, 5, 6 # => [4, 5, 6, 1]
+stack.shift 3 # => [4, 5, 6]
+stack # => [1]
+
+# 여러개 가져올 떄는 Array#values_at
+lang = %w(ruby python perl haskell lisp scala)
+lang.values_at 0, 2, 5 # => ["ruby", "perl", "scala"]
+
+# Hash 객체에서
+lang = {ruby:'matz', python:'guido', perl:'larry', lisp:'mccarthy'}
+lang.values_at :ruby, :perl # => ["matz", "larry"]
+
+```
+
+2. Kernel#Array 서로 다른 타입을 가진 인수 일괄 처리 `Kernel#Array`
+
+```ruby
+ Array 1 # => [1]
+ Array [1,2] # => [1, 2]
+ Array 1..5 # => [1, 2, 3, 4, 5]
+ 
+ require "date"
+ def int2month(nums)
+   Array(nums).map { |n| Date.new(2010,n).strftime "%B"  }
+ end
+ 
+ int2month(3) # => ["March"]
+ int2month([2,6,9]) # => ["February", "June", "September"]
+ int2month(4..8) # => ["April", "May", "June", "July", "August"]
+```
+
+3. 요소 구문 콤마 배열과 해시의 각 요소를 구분하는 기호로 사용하는 콤마중 마지막은 무시 ,  요소를 자주 추가/삭제하거나 파일에서 eval 할 때 유용
+4. 해시 리터럴 ruby1.9에서 새로운 해시 리터럴 추가 했지만 예전과 혼용가능
+
+```ruby
+designers1 = {
+               :lisp => "John McCarthy",
+               :ruby => "Yukihiro Matsumoto",
+               :perl => "Larry Wall",
+               :smalltalk => "Alan Kay",
+               :'C++' =>  "Bjarne Stroustrup",
+             }
+ 
+ designers2 = {
+               java: "James Gosling",
+               python: "Guido van Rossum",
+               javascript: "Brendan Eich",
+               scala: "Martin Odersky",
+             }
+ 
+ designers = designers1.merge designers2
+# => {:lisp=>"John McCarthy", :ruby=>"Yukihiro Matsumoto", :perl=>"Larry Wall", :smalltalk=>"Alan Kay", :"C++"=>"Bjarne Stroustrup", :java=>"James Gosling", :python=>"Guido van Rossum", :javascript=>"Brendan Eich", :scala=>"Martin Odersky"}
+```
+
+5. Enumerable#each_with_object Enumerable#inject는 편리한 메소드! 하지만 블록에서 조건을 지정하는 경우 각 반복에서 결과값이 중첩될 객체가 리턴되는 것이 보장되어야만 한다.
+
+```ruby
+ designers.inject([]) { |mem, (lang, name)| mem << [name,lang].join('/') if lang[/l/]; mem }
+  # => ["John McCarthy/lisp", "Larry Wall/perl", "Alan Kay/smalltalk", "Martin Odersky/scala"]
+
+# Enumerable#each_with_object를 이러한 문제를 사용하면 간단히 해결가능
+
+ designers.each_with_object([]) { |(lang, name), mem| mem << [name,lang].join('/') if lang[/l/] }
+  # => ["John McCarthy/lisp", "Larry Wall/perl", "Alan Kay/smalltalk", "Martin Odersky/scala"]
+```
+
+6. splat 전개 Ruby 에서 알파벳 배열을 만들 때는 보통 아래와 같은 방법을 사용한다.
+
+```ruby
+(1..20).to_a
+# => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+ ('a'..'z').to_a 
+# => ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+ (1..10).to_a + (20..30).to_a
+# => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+
+#########################  *(splat)전개를 사용해 아래와 같이 바꿔 쓴다.
+
+ [*1..20] 
+# => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+ [*'a'..'m']
+# => ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]
+
+ [*1..10, *20..30] 
+# => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+
+```
+
+7. 전치 콜론 문자열을 심볼로 변환할 때는 일반적으로 , String#intern이나 String#to_sym 메소드를 사용 또는 문자열 리터럴 앞에 콜론을 놓는다.
+
+```ruby
+ 'goodbye'.intern # => :goodbye
+ 'goodbye'.to_sym # => :goodbye
+ 
+ :'goodbye' # => :goodbye
+ 
+ a = 'goodbye'
+ :"#{a}" # => :goodbye
+```
+
+8. Enumerator#with_index 임의의 리스트를 표준 출력할 때 각 리스트의 순서를 나타내는 인덱스 숫자가 필요할때 일반적으로 `Enumerator#with_index`를 사용
+
+```ruby
+names = Module.constants.take(10)
+names.each_with_index { |name, i| puts "%d: %s" % [i+1, name] }
+# >> 1: Object
+# >> 2: Module
+# >> 3: Class
+# >> 4: Kernel
+# >> 5: NilClass
+# >> 6: NIL
+# >> 7: Data
+# >> 8: TrueClass
+# >> 9: TRUE
+# >> 10: FalseClass
+```
+
+
+
