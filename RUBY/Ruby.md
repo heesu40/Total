@@ -457,7 +457,20 @@ puts(finish - start)
 
 [참고사이트](https://jinbroing.tistory.com/41)
 
+- 배열 빈값 제거
 
+- ```ruby
+  test
+  => [1, 2, 3, "", ""]
+  >> >> test.reject(&:blank?)
+  test.reject(&:blank?)
+  => [1, 2, 3]
+  #혹은 array.reject(&:empty)
+  #혹은 array.delete("")
+  #해주면 된다~~~~~
+  ```
+
+- 
 
 
 
