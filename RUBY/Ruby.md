@@ -470,6 +470,13 @@ puts(finish - start)
   #해주면 된다~~~~~
   ```
 
+- 배열 속 특정 단어 포함된 index 찾기
+
+- ```ruby
+  array.index{|s| s.include? "일부단어"}
+  #일부단어가 포함된 배열의 인덱스 값을 리턴해준다.
+  ```
+
 - 
 
 
