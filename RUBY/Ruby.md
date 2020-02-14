@@ -453,6 +453,24 @@ puts(finish - start)
 
 - [참고페이지](https://blog.nacyot.com/articles/2014-04-19-ruby-enumerable/)
 
+## 정규식
+
+- 참고페이지 : [https://enshahar.tistory.com/entry/%EB%A3%A8%EB%B9%84-%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%A0%95%EA%B7%9C%EC%8B%9DRegular-Expression](https://enshahar.tistory.com/entry/루비-사용자-가이드-정규식Regular-Expression)
+
+- ![image-20200210160847370](/Users/hee/Library/Application Support/typora-user-images/image-20200210160847370.png)
+
+- ```ruby
+  ss = ["가슴" , "50" , "배" , "60"]
+  ss.each do |str|
+    if str.match(/[ㄱ-힣]/)
+    puts str
+    end
+  #결과 "가슴" "배" 
+  #이런식으로 이용하게 된다~
+  ```
+
+- 
+
 ## 배열
 
 [참고사이트](https://jinbroing.tistory.com/41)
