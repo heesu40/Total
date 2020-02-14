@@ -517,6 +517,14 @@ puts(finish - start)
 
 - 셀리니움 오류 처리는 [사이트](https://elementalselenium.com/tips/44-exception-handling)를 참고하세요!
 
+## 정규표현식
+
+```RUBY
+gsub(/\n/, "") #변환 공식 여러가지 문자를 쓸 경우 []로 묶어 준다.
+```
+
+
+
 
 ## 전처리 형태소분석
 
