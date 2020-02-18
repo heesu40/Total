@@ -497,6 +497,54 @@ puts(finish - start)
 
 - 
 
+## Hash, Symbol
+
+- ```ruby 
+  #Hash
+  #키-값 쌍 가지는 콜렉션으로 배열과 다르게 항목간의 순서 x, 유일한 키에 대응하는 하나의 값만 가진다.
+  #hash_name[key_name] 과 같은 형식을 사용
+  hh = {
+    "name" => "hehe",
+    "age" => 20
+    }
+  puts hh["name"]  #=> "hehe"
+  
+  
+  #Hash.new
+  cats = Hash.new() #=> {}
+  
+  cats["name"] = "hehe"
+  cats["age"] = 20
+  cats #-> {"name"=>"hehe" , "age"=>20}
+  
+  #키-값쌍 삭제
+  cats.delete("age")
+  ```
+
+- ```ruby
+  #Symbol
+  :ss
+  
+  #Hash에서의 Symbol사용
+  #Hash Rocket
+  n_hash = {
+    :name => "hehe",
+    :age => 20,
+    }
+  #새로운 Hash 문법
+  n_hash = {
+    name: "hehe",
+    age: 20,
+    }
+  
+  #symbol을 string으로 형변환
+  :humpty.to_s #-> "humpty"
+  
+  #string을 symbol로 변환
+  "humpty".to_sym #=> :hummpty
+  "humpty".intern #=> :humpty
+  ```
+
 
 
 ## 크롤링
