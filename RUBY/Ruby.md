@@ -747,5 +747,5 @@ names.each_with_index { |name, i| puts "%d: %s" % [i+1, name] }
 # >> 10: FalseClass
 ```
 
-
+9. 
 
