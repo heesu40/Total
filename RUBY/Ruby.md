@@ -453,6 +453,24 @@ puts(finish - start)
 
 - [참고페이지](https://blog.nacyot.com/articles/2014-04-19-ruby-enumerable/)
 
+## 정규식
+
+- 참고페이지 : [https://enshahar.tistory.com/entry/%EB%A3%A8%EB%B9%84-%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%A0%95%EA%B7%9C%EC%8B%9DRegular-Expression](https://enshahar.tistory.com/entry/루비-사용자-가이드-정규식Regular-Expression)
+
+- ![image-20200210160847370](/Users/hee/Library/Application Support/typora-user-images/image-20200210160847370.png)
+
+- ```ruby
+  ss = ["가슴" , "50" , "배" , "60"]
+  ss.each do |str|
+    if str.match(/[ㄱ-힣]/)
+    puts str
+    end
+  #결과 "가슴" "배" 
+  #이런식으로 이용하게 된다~
+  ```
+
+- 
+
 ## 배열
 
 [참고사이트](https://jinbroing.tistory.com/41)
@@ -479,6 +497,54 @@ puts(finish - start)
 
 - 
 
+## Hash, Symbol
+
+- ```ruby 
+  #Hash
+  #키-값 쌍 가지는 콜렉션으로 배열과 다르게 항목간의 순서 x, 유일한 키에 대응하는 하나의 값만 가진다.
+  #hash_name[key_name] 과 같은 형식을 사용
+  hh = {
+    "name" => "hehe",
+    "age" => 20
+    }
+  puts hh["name"]  #=> "hehe"
+  
+  
+  #Hash.new
+  cats = Hash.new() #=> {}
+  
+  cats["name"] = "hehe"
+  cats["age"] = 20
+  cats #-> {"name"=>"hehe" , "age"=>20}
+  
+  #키-값쌍 삭제
+  cats.delete("age")
+  ```
+
+- ```ruby
+  #Symbol
+  :ss
+  
+  #Hash에서의 Symbol사용
+  #Hash Rocket
+  n_hash = {
+    :name => "hehe",
+    :age => 20,
+    }
+  #새로운 Hash 문법
+  n_hash = {
+    name: "hehe",
+    age: 20,
+    }
+  
+  #symbol을 string으로 형변환
+  :humpty.to_s #-> "humpty"
+  
+  #string을 symbol로 변환
+  "humpty".to_sym #=> :hummpty
+  "humpty".intern #=> :humpty
+  ```
+
 
 
 ## 크롤링
@@ -503,6 +569,7 @@ puts(finish - start)
 
 ```RUBY
 gsub(/\n/, "") #변환 공식 여러가지 문자를 쓸 경우 []로 묶어 준다.
+gsub(/R+/, "") #\n \r 이런 식을 제거한다.
 ```
 
 
