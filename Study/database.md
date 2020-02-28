@@ -2473,3 +2473,40 @@ drop role 롤이름--권한 삭제
 
 
 
+
+
+
+
+
+
+***
+
+Ruby mine (rails에서 DB검색)
+
+## 검색
+
+1. ```cmd
+   #console에서
+   #테이블명이 RawHtml임으로
+   raw_data = RawHtml.where("created_at => ?" , "2020-2-20") #=>이 날짜 이후의 글을 찾고싶어서 작성
+   #혹은 이렇게 찾는다.
+   raw_data = RawHtml.where("uid LIKE ? " , "해당문자%")#> %문자% 해당문자 포함 표시!
+   ```
+
+2. 
+
+## 삭제
+
+1. ```cmd
+   
+   #console에서
+   #예를 들어 아래와 같이 삭제하면 Data는 삭제도지만 연결되어 있는, worker_logs와 point_histories는 남게 된다.
+   raw_data.destroy_all 
+   
+   #따라서 다 삭제 하고싶을때는 아래와 같이 해야 쓰레기가 남지 않는다. 
+   raw_data.destroy
+   
+   
+   ```
+
+2. 
