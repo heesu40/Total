@@ -545,7 +545,25 @@ puts(finish - start)
   "humpty".intern #=> :humpty
   ```
 
+- ```ruby
+  #key 값만 검색하기 위해서는
+  cats.each_key do  |k|
+    puts k
+  end
+  
+  # value 값만 검색하기 위해서
+  cats.each_value do |y|
+    puts y
+  end
+  
+  #둘다 검색하기 위해서는
+  cats.each do |k, y|
+    puts "#{k}는 키값 , #{y}는 밸류값"
+  end
+  
+  ```
 
+- 
 
 ## 크롤링
 
