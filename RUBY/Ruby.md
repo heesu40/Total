@@ -68,7 +68,7 @@
 
 - 
 
-## 프로젝트 생성!
+## 프로젝트 생성 Rails
 
 - ```bash
   rails new <프로젝트 이름>
@@ -277,7 +277,7 @@ $ rails generate controller home
 #### 라우팅 설정
 
 -  ```ruby
-  #project > config > routes.rb
+  #project > config > routes.
   
   Rails.application.routes.draw do
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
