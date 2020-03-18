@@ -59,7 +59,11 @@
   출처: https://jeong-pro.tistory.com/139 [기본기를 쌓는 정아마추어 코딩블로그]
   ```
 
-
+- `redis-server` : 레디스 서버
+- `redis-cli` : 레디스 CLI 인터페이스
+- `redis-sentinel` : 레디스 모니터링 툴
+- `redis-benchmark` : 레디스의 성능 테스트를 위한 벤치마킹 툴
+- `redis-check-aof` : 데이터 파일 손상 확인
 
 ### 4. 간단한 설정변경
 
@@ -90,3 +94,34 @@
 
 
 
+### 5. 사용법
+
+1. set
+
+   - ```ruby
+     $redis.set(key, value) #=> 원형
+     $redis.set('name' , 'Ben') #=> 실제 사용 코드 
+     ```
+
+2. get
+
+   - ```ruby
+     $redis.get(key) # => 원형
+     $redis.get('name')  #=> 실제 사용 코드
+     ```
+
+3. del
+
+   - ```ruby
+     $redis.del(key)#=>원형
+     $redis.del('name')#=> 실제 사용 코드
+     ```
+
+
+
+
+
+
+### 6. Redis / Memcached 
+
+1. 
