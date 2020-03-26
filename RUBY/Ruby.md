@@ -951,9 +951,64 @@ names.each_with_index { |name, i| puts "%d: %s" % [i+1, name] }
 | `옵션` + `F3`                    | `option` + `F3`                  | 해당 위치 북마크 하기                                        |                   | 상        |
 | `컨트롤` + `북마크번호`          | `control` + `number`             | 북마크한곳으로 이동                                          |                   | 상        |
 | `시프트` + `커맨드` + `>`        | `shift` + `command` + `>`        | <%= %> 생성                                                  |                   | 상        |
-| `시프트` + `커맨드` + `엔터`     | `shift` + `command` + `enter`    | Complete statement                                           |                   | 상        |
+| `시프트` + `커맨드` + `엔터`     | `shft` + `command` + `enter`     | Complete statement                                           |                   | 상        |
 
 >  출처 : https://limdongjin.github.io/tools/rubymine/
 
 
 
+## 엑셀
+
+## 엑셀 파일 저장
+
+참고: http://cxn03651.github.io/write_xlsx/format.html#set_bg_color
+
+- 예시
+
+```ruby
+workbook = WriteXLSX.new('ruby.xlsx')
+
+# Add a worksheet
+worksheet = workbook.add_worksheet
+
+# Add and define a format
+format = workbook.add_format # Add a format
+format.set_bold
+format.set_color('red')
+format.set_align('center')
+
+# Write a formatted and unformatted string, row and column notation.
+col = row = 0
+worksheet.write(row, col, "Hi Excel!", format)
+worksheet.write(1,   col, "Hi Excel!")
+# 여기서 알수 있는 것은 기본 숫자가 00 부터라는 사실 
+# Write a number and a formula using A1 notation
+worksheet.write('A3', 1.2345)
+worksheet.write('A4', '=SIN(PI()/4)')
+
+workbook.close
+```
+
+
+
+![스크린샷 2020-03-25 오후 2.22.55](Ruby.assets/스크린샷 2020-03-25 오후 2.22.55.png)
+
+```ruby
+data = RawHtmlFile.where('uid LIKE ?', 'ssg%')
+write_workbook = WriteXLSX.new('excel_output.xlsx')
+write_sheet = write_workbook.add_worksheet
+count = 0
+format = workbook.add_format
+format.set_bg_color('yellow')
+data.each_with_index do |dd,idx|
+  base_html = Nokogiri::HTML.parse(open(dd.file.url).read)
+  title =  base_html.xpath('//h2[@class="cdtl_info_tit"]').text if base_html.xpath('//h2[@class="cdtl_info_tit"]').present?
+  write_sheet.write(idx,1, title )
+  if /\\d\\s?\\+\\s?\\d|x\\s?\\d|X\\s?\\d|[1-9][0-9]개|[2-9]개|X\\s?\\W|x\\s?\\W|올딜전|기프트박스|모음전|SSG 스페셜|set|SET|세트|[1-9][0-9]종|[2-9]종/.match(title).present?
+    count+= 1
+    write_sheet.write(idx,0, count, format)
+    end
+  
+  end
+write_workbook.close
+```
