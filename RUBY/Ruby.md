@@ -951,7 +951,7 @@ names.each_with_index { |name, i| puts "%d: %s" % [i+1, name] }
 | `옵션` + `F3`                    | `option` + `F3`                  | 해당 위치 북마크 하기                                        |                   | 상        |
 | `컨트롤` + `북마크번호`          | `control` + `number`             | 북마크한곳으로 이동                                          |                   | 상        |
 | `시프트` + `커맨드` + `>`        | `shift` + `command` + `>`        | <%= %> 생성                                                  |                   | 상        |
-| `시프트` + `커맨드` + `엔터`     | `shft` + `command` + `enter`     | Complete statement                                           |                   | 상        |
+| `시프트` + `커맨드` + `엔터`     | `shift` + `command` + `enter`    | Complete statement                                           |                   | 상        |
 
 >  출처 : https://limdongjin.github.io/tools/rubymine/
 
@@ -965,33 +965,33 @@ names.each_with_index { |name, i| puts "%d: %s" % [i+1, name] }
 
 - 예시
 
-```ruby
-workbook = WriteXLSX.new('ruby.xlsx')
+  ```ruby
+  workbook = WriteXLSX.new('ruby.xlsx')
+  
+  # Add a worksheet
+  worksheet = workbook.add_worksheet
+  
+  # Add and define a format
+  format = workbook.add_format # Add a format
+  format.set_bold
+  format.set_color('red')
+  format.set_align('center')
+  
+  # Write a formatted and unformatted string, row and column notation.
+  col = row = 0
+  worksheet.write(row, col, "Hi Excel!", format)
+  worksheet.write(1,   col, "Hi Excel!")
+  # 여기서 알수 있는 것은 기본 숫자가 00 부터라는 사실 
+  # Write a number and a formula using A1 notation
+  worksheet.write('A3', 1.2345)
+  worksheet.write('A4', '=SIN(PI()/4)')
+  
+  workbook.close
+  ```
 
-# Add a worksheet
-worksheet = workbook.add_worksheet
-
-# Add and define a format
-format = workbook.add_format # Add a format
-format.set_bold
-format.set_color('red')
-format.set_align('center')
-
-# Write a formatted and unformatted string, row and column notation.
-col = row = 0
-worksheet.write(row, col, "Hi Excel!", format)
-worksheet.write(1,   col, "Hi Excel!")
-# 여기서 알수 있는 것은 기본 숫자가 00 부터라는 사실 
-# Write a number and a formula using A1 notation
-worksheet.write('A3', 1.2345)
-worksheet.write('A4', '=SIN(PI()/4)')
-
-workbook.close
-```
+  
 
 
-
-![스크린샷 2020-03-25 오후 2.22.55](Ruby.assets/스크린샷 2020-03-25 오후 2.22.55.png)
 
 ```ruby
 data = RawHtmlFile.where('uid LIKE ?', 'ssg%')
@@ -1012,3 +1012,10 @@ data.each_with_index do |dd,idx|
   end
 write_workbook.close
 ```
+
+
+
+
+
+### ruby공부 시작
+
