@@ -563,6 +563,13 @@ puts(finish - start)
   
   ```
 
+- hash데이터의 같은 값을 가져오는 방식
+
+- ```ruby
+  hash.select {|k,v| k[v] == '값'} #> 값에 해당되는 것만 선택된다. and, or , > < 등 사용 가능
+  
+  ```
+
 - 
 
 ## 크롤링
