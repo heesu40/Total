@@ -1068,3 +1068,7 @@ write_workbook.close
 
 참조: https://smartbase.tistory.com/55
 
+#### 상속
+
+
+
