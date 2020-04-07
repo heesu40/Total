@@ -1068,9 +1068,5 @@ write_workbook.close
 
 참조: https://smartbase.tistory.com/55
 
-#### 상속
-
-
-
-상속 공부 하자
+#### 상속 
 
