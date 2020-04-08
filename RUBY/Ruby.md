@@ -237,7 +237,26 @@ $ rails generate controller home
 
 - 이렇게 결과가 나오게 된다.
 
+## 서버 죽이기
 
+- 프로세스에서
+
+- ```cmd
+  #먼저 ruby on rails 파일에서 
+  cd tmp
+  cd pids #=>서버피드가 저장되어 있다.
+  rm server.pid  #=> 서버피드이름이 저장되어있느 파일이다. 삭제해준다.
+  #이후 프로세스를 죽여야한다.
+  #i-term에서
+  lsof -wni tcp:3000 #=> 포트 번호 3000번인 프로세스를 가르켜 준다. 
+  #lsof란? unix process가 open 하고 있는 file을 알려준다. (GNU public license)
+  lsof -h #=> help
+  kill -9 [pid번호] #=> 프로세스를 죽이게 된다.
+  
+  
+  ```
+
+  > 리눅스와 유닉스는 추상화된 파일 시스템(VFS - Virtual File System)을 사용하므로 일반 파일, 디렉터리, 네트워크 소켓, 라이브러리, 심볼릭 링크 등도 모두 파일로 처리되며 **lsof** 에서 상세한 정보를 확인할 수 있다.
 
 ## CRUD
 
