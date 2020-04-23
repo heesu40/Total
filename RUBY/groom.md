@@ -44,7 +44,8 @@ rails g model (이름) #=> g = generate
 
 ```
 
-
+4. 삭제 기능 추가
+5. 
 
 
 
