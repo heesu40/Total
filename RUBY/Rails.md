@@ -88,5 +88,5 @@ books = Book.where('publish = :publish AND price >= :price', publish: params[:pu
 
 - 두 가지 모두 장점과 단점이 있다. 일반적으로는 매개 변수 수가 적은 경우에는 이름 없는 매개 변수, 매개 변수가 많은 경우에는 이름 있는 매개 변수를 사용할 것을 추천한다.
 
-
+### 다음 공부할 것...
 
