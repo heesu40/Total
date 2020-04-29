@@ -31,6 +31,7 @@
     - [우아한 주정차](https://github.com/heesu40/Complete)
     - [issueWhatShow](https://github.com/heesu40/issuewhatshow)
 11. [파이썬]() 
-12. 그 외
+12. 루비
+13. 그 외
     - [4차산업혁명](https://github.com/heesu40/STUDY/blob/master/Study/The%20Fourth%20Industrial%20Revolution.md)
 
