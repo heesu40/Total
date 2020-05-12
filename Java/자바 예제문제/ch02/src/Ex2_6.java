@@ -4,10 +4,12 @@ class Ex2_6 {
 		double pi = 3.14;
 		char 	 ch = 'a';
 		String str = "abc";
+		int i = 'A';
 
 		System.out.println(x); 
 		System.out.println(pi); 
 		System.out.println(ch);
 		System.out.println(str);
+		System.out.print(i);
 	}
 }
